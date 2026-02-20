@@ -1,1 +1,104 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Producto - AF Innovación Tecnológica</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.product-layout{
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.product-img{
+flex:1;
+}
+
+.product-img img{
+width:100%;
+border-radius:15px;
+}
+
+.product-info{
+flex:1;
+}
+
+.product-info h1{
+margin-bottom:15px;
+}
+
+.product-info .price{
+font-size:22px;
+margin:15px 0;
+}
+
+.product-info button{
+margin-right:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<div>📍 Huaraz - Perú</div>
+<div>📞 948231352</div>
+</div>
+
+<header>
+<div class="logo">AF INNOVACIÓN TECNOLÓGICA</div>
+<nav>
+<a href="index.html">Inicio</a>
+<a href="tienda.html">Tienda</a>
+<a href="carrito.html">Carrito</a>
+</nav>
+</header>
+
+<section class="section">
+
+<div class="product-layout">
+
+<div class="product-img">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+</div>
+
+<div class="product-info">
+<h1>Laptop Gamer</h1>
+<div class="price">S/ 3200</div>
+
+<p>
+Laptop Gamer de alto rendimiento ideal para diseño, ingeniería y gaming.
+Procesador rápido, SSD NVMe y gráficos dedicados.
+</p>
+
+<br>
+
+<button onclick="addToCart('Laptop Gamer',3200)">
+Agregar al carrito
+</button>
+
+<button onclick="buyNow()">
+Comprar por WhatsApp
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+AF Innovación Tecnológica - Huaraz
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+function buyNow(){
+window.open("https://wa.me/51948231352?text=Hola quiero la Laptop Gamer S/3200");
+}
+</script>
+
+</body>
+</html>
