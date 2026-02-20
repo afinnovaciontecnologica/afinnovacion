@@ -1,1 +1,110 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tienda - AF Innovación Tecnológica</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+<div>📍 Huaraz - Perú</div>
+<div>📞 948231352</div>
+</div>
+
+<header>
+<div class="logo">AF INNOVACIÓN TECNOLÓGICA</div>
+<nav>
+<a href="index.html">Inicio</a>
+<a href="carrito.html">Carrito</a>
+</nav>
+</header>
+
+<section class="section">
+<h2>Nuestra Tienda</h2>
+
+<div class="layout">
+
+<!-- FILTROS -->
+<div class="filters">
+<h3>Filtros</h3>
+
+<p><strong>Categoría</strong></p>
+<select onchange="filterCategory(this.value)">
+<option value="all">Todos</option>
+<option value="computadora">Computadoras</option>
+<option value="impresora">Impresoras</option>
+<option value="accesorio">Accesorios</option>
+</select>
+
+<br><br>
+
+<p><strong>Precio máximo</strong></p>
+<input type="number" id="priceFilter" placeholder="Ej: 1000">
+<button onclick="filterPrice()">Aplicar</button>
+
+</div>
+
+<!-- PRODUCTOS -->
+<div class="products" id="productContainer">
+
+<div class="card" data-category="computadora" data-price="3200">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>Laptop Gamer</h3>
+<div class="price">3200</div>
+<button onclick="addToCart('Laptop Gamer',3200)">Agregar</button>
+</div>
+
+<div class="card" data-category="impresora" data-price="650">
+<img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7">
+<h3>Impresora Epson</h3>
+<div class="price">650</div>
+<button onclick="addToCart('Impresora Epson',650)">Agregar</button>
+</div>
+
+<div class="card" data-category="accesorio" data-price="119">
+<img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7">
+<h3>Audífonos Gamer</h3>
+<div class="price">119</div>
+<button onclick="addToCart('Audífonos Gamer',119)">Agregar</button>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<footer>
+AF Innovación Tecnológica - Huaraz
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+function filterCategory(category){
+let cards=document.querySelectorAll(".card");
+cards.forEach(card=>{
+if(category==="all" || card.dataset.category===category){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+}
+
+function filterPrice(){
+let max=document.getElementById("priceFilter").value;
+let cards=document.querySelectorAll(".card");
+cards.forEach(card=>{
+if(max==="" || parseInt(card.dataset.price)<=parseInt(max)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+}
+</script>
+
+</body>
+</html>
