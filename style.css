@@ -1,1 +1,110 @@
 
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#f4f7fb;
+}
+
+.topbar{
+background:#0077ff;
+color:white;
+padding:8px 40px;
+display:flex;
+justify-content:space-between;
+}
+
+header{
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+
+.logo{
+font-weight:700;
+font-size:22px;
+color:#0077ff;
+}
+
+.search input{
+padding:8px 15px;
+border-radius:20px;
+border:1px solid #ddd;
+width:250px;
+}
+
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+.hero{
+background:linear-gradient(135deg,#0077ff,#00c6ff);
+color:white;
+padding:80px 40px;
+text-align:center;
+}
+
+.section{
+padding:40px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.price{
+color:#0077ff;
+font-weight:700;
+margin:10px 0;
+}
+
+button{
+background:#0077ff;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:20px;
+cursor:pointer;
+}
+
+.filters{
+width:200px;
+}
+
+.layout{
+display:flex;
+gap:30px;
+}
+
+footer{
+background:#111;
+color:white;
+padding:40px;
+margin-top:40px;
+}
