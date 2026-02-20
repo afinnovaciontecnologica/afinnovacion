@@ -163,3 +163,16 @@ font-size:20px;
 
 .prev{left:20px;}
 .next{right:20px;}
+.flash-sale{
+background:#111;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+#countdown{
+font-size:30px;
+font-weight:bold;
+color:#00c6ff;
+margin-top:10px;
+}
