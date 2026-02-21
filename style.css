@@ -176,3 +176,28 @@ font-weight:bold;
 color:#00c6ff;
 margin-top:10px;
 }
+
+.brands{
+padding:60px;
+text-align:center;
+background:#f4f7fb;
+}
+
+.brand-logos{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.brand-logos img{
+height:50px;
+opacity:.7;
+transition:.3s;
+}
+
+.brand-logos img:hover{
+opacity:1;
+transform:scale(1.1);
+}
