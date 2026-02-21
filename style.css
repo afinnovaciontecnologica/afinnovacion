@@ -274,3 +274,15 @@ font-size:14px;
 }
 
 }
+.card{
+border:1px solid #eee;
+}
+
+.card:hover{
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+transform:translateY(-8px);
+}
+
+button{
+font-weight:600;
+}
