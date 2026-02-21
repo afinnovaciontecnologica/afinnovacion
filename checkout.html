@@ -3,8 +3,14 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Finalizar Compra - AF Innovación Tecnológica</title>
+
 <link rel="stylesheet" href="style.css">
+
+<!-- Fuente Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 .form-container{
 max-width:600px;
@@ -14,6 +20,7 @@ padding:30px;
 border-radius:15px;
 box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
+
 input, select{
 width:100%;
 padding:10px;
@@ -21,20 +28,47 @@ margin-bottom:15px;
 border-radius:8px;
 border:1px solid #ddd;
 }
+
+.error{
+color:red;
+font-size:14px;
+margin-bottom:10px;
+}
 </style>
 </head>
 
 <body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+<div>📍 Huaraz - Perú</div>
+<div>📞 948231352</div>
+</div>
+
+<!-- HEADER -->
+<header>
+<div class="logo">AF INNOVACIÓN TECNOLÓGICA</div>
+<nav>
+<a href="index.html">Inicio</a>
+<a href="tienda.html">Tienda</a>
+<a href="carrito.html">Carrito</a>
+<a href="blog.html">Blog</a>
+</nav>
+</header>
 
 <section class="section">
 <h2>Finalizar Pedido</h2>
 
 <div class="form-container">
 
+<div id="errorMsg" class="error"></div>
+
 <input type="text" id="nombre" placeholder="Nombre completo">
 <input type="text" id="telefono" placeholder="Teléfono">
 <input type="text" id="direccion" placeholder="Dirección">
+
 <select id="pago">
+<option value="">Seleccionar método de pago</option>
 <option>Yape</option>
 <option>Plin</option>
 <option>Transferencia</option>
@@ -44,34 +78,56 @@ border:1px solid #ddd;
 <button onclick="finalizarPedido()">Confirmar Pedido</button>
 
 </div>
-
 </section>
+
+<footer>
+AF Innovación Tecnológica - Huaraz<br>
+Especialistas en computadoras, impresoras y soporte técnico
+</footer>
 
 <script>
 function finalizarPedido(){
-let nombre = document.getElementById("nombre").value;
-let telefono = document.getElementById("telefono").value;
-let direccion = document.getElementById("direccion").value;
+
+let nombre = document.getElementById("nombre").value.trim();
+let telefono = document.getElementById("telefono").value.trim();
+let direccion = document.getElementById("direccion").value.trim();
 let pago = document.getElementById("pago").value;
+let error = document.getElementById("errorMsg");
+
+error.innerHTML = "";
+
+if(nombre === "" || telefono === "" || direccion === "" || pago === ""){
+error.innerHTML = "⚠️ Complete todos los campos.";
+return;
+}
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+if(cart.length === 0){
+error.innerHTML = "⚠️ El carrito está vacío.";
+return;
+}
+
 let total = 0;
 let productos = "";
 
 cart.forEach(item=>{
-productos += "- " + item.name + " S/ " + item.price + "%0A";
+productos += "- " + item.name + " S/ " + item.price + "\n";
 total += item.price;
 });
 
-let mensaje = "Hola AF Innovación Tecnológica,%0A";
-mensaje += "Cliente: " + nombre + "%0A";
-mensaje += "Teléfono: " + telefono + "%0A";
-mensaje += "Dirección: " + direccion + "%0A";
-mensaje += "Pago: " + pago + "%0A";
-mensaje += "Productos:%0A" + productos;
-mensaje += "Total: S/ " + total;
+let mensaje =
+"Hola AF Innovación Tecnológica\n" +
+"Cliente: " + nombre + "\n" +
+"Teléfono: " + telefono + "\n" +
+"Dirección: " + direccion + "\n" +
+"Pago: " + pago + "\n\n" +
+"Productos:\n" + productos +
+"\nTotal: S/ " + total;
 
-window.open("https://wa.me/51948231352?text=" + mensaje);
+let url = "https://wa.me/51948231352?text=" + encodeURIComponent(mensaje);
+
+window.open(url);
 
 localStorage.removeItem("cart");
 }
@@ -79,3 +135,4 @@ localStorage.removeItem("cart");
 
 </body>
 </html>
+
