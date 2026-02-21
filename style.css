@@ -1,19 +1,35 @@
-body{
+/* =====================================
+   AF INNOVACIÓN TECNOLÓGICA - ESTILO PRO
+===================================== */
+
+*{
+box-sizing:border-box;
 margin:0;
-font-family:'Poppins',sans-serif;
-background:#f4f7fb;
+padding:0;
 }
 
-/* TOP BAR */
+body{
+font-family:'Poppins',sans-serif;
+background:#f4f7fb;
+color:#333;
+}
+
+/* =========================
+   TOP BAR
+========================= */
 .topbar{
 background:#0077ff;
 color:white;
 padding:8px 40px;
 display:flex;
 justify-content:space-between;
+align-items:center;
+font-size:14px;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 header{
 background:white;
 display:flex;
@@ -21,6 +37,9 @@ justify-content:space-between;
 align-items:center;
 padding:15px 40px;
 box-shadow:0 4px 10px rgba(0,0,0,.05);
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 .logo{
@@ -34,6 +53,7 @@ padding:8px 15px;
 border-radius:20px;
 border:1px solid #ddd;
 width:250px;
+outline:none;
 }
 
 nav a{
@@ -41,23 +61,24 @@ margin-left:20px;
 text-decoration:none;
 color:#333;
 font-weight:500;
+transition:.3s;
 }
 
-/* HERO */
-.hero{
-background:linear-gradient(135deg,#0077ff,#00c6ff);
-color:white;
-padding:80px 40px;
-text-align:center;
+nav a:hover{
+color:#0077ff;
 }
 
-/* SECTION */
+/* =========================
+   SECTION
+========================= */
 .section{
 padding:40px;
 animation:fadeUp .8s ease forwards;
 }
 
-/* PRODUCTS */
+/* =========================
+   PRODUCTS
+========================= */
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -92,7 +113,9 @@ font-weight:700;
 margin:10px 0;
 }
 
-/* BUTTONS */
+/* =========================
+   BUTTONS
+========================= */
 button{
 background:#0077ff;
 color:white;
@@ -109,7 +132,9 @@ transform:scale(1.05);
 box-shadow:0 5px 15px rgba(0,119,255,.4);
 }
 
-/* SLIDER */
+/* =========================
+   SLIDER
+========================= */
 .slider{
 position:relative;
 width:100%;
@@ -145,7 +170,22 @@ padding:20px;
 border-radius:10px;
 }
 
-/* FLASH SALE */
+.slider button{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.5);
+padding:10px;
+border-radius:50%;
+z-index:2;
+}
+
+.prev{ left:20px; }
+.next{ right:20px; }
+
+/* =========================
+   FLASH SALE
+========================= */
 .flash-sale{
 background:#111;
 color:white;
@@ -160,10 +200,13 @@ color:#00c6ff;
 margin-top:10px;
 }
 
-/* BRANDS */
+/* =========================
+   BRANDS
+========================= */
 .brands{
 padding:60px;
 text-align:center;
+background:white;
 }
 
 .brand-logos{
@@ -185,15 +228,20 @@ opacity:1;
 transform:scale(1.1);
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 footer{
 background:#111;
 color:white;
 padding:40px;
 margin-top:40px;
+text-align:center;
 }
 
-/* ANIMATIONS */
+/* =========================
+   ANIMATIONS
+========================= */
 @keyframes fadeIn{
 from{opacity:0;transform:translateY(20px);}
 to{opacity:1;transform:translateY(0);}
@@ -204,26 +252,39 @@ from{opacity:0;transform:translateY(30px);}
 to{opacity:1;transform:translateY(0);}
 }
 
-/* MOBILE */
+/* =========================
+   RESPONSIVE
+========================= */
 @media(max-width:768px){
+
+.topbar{
+flex-direction:column;
+text-align:center;
+gap:5px;
+}
+
 header{
 flex-direction:column;
 gap:10px;
 }
+
 .search input{
 width:100%;
 }
+
 .products{
 grid-template-columns:1fr;
 }
+
 .slider{
 height:250px;
 }
+
 .caption{
 left:10px;
 right:10px;
 bottom:20px;
 font-size:14px;
 }
-}
 
+}
