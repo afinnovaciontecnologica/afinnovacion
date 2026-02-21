@@ -210,3 +210,18 @@ animation:fadeIn .8s ease forwards;
 from{opacity:0;transform:translateY(20px);}
 to{opacity:1;transform:translateY(0);}
 }
+
+.pagination{
+margin-top:30px;
+text-align:center;
+}
+
+.pagination button{
+margin:5px;
+padding:8px 15px;
+border:none;
+background:#0077ff;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
