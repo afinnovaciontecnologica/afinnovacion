@@ -52,3 +52,20 @@ showSlide(currentSlide);
 setInterval(()=>{
 changeSlide(1);
 },4000);
+
+
+/* CONTADOR */
+let endDate = new Date();
+endDate.setHours(endDate.getHours()+24);
+
+setInterval(()=>{
+let now = new Date();
+let diff = endDate - now;
+
+let hours = Math.floor(diff / (1000*60*60));
+let minutes = Math.floor((diff % (1000*60*60))/(1000*60));
+let seconds = Math.floor((diff % (1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+hours+"h "+minutes+"m "+seconds+"s";
+},1000);
