@@ -1,10 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Producto - AF Innovación Tecnológica</title>
+
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 .product-layout{
 display:flex;
@@ -36,9 +39,11 @@ margin:15px 0;
 
 .product-info button{
 margin-right:10px;
+margin-bottom:10px;
 }
 </style>
 </head>
+
 <body>
 
 <div class="topbar">
@@ -52,6 +57,7 @@ margin-right:10px;
 <a href="index.html">Inicio</a>
 <a href="tienda.html">Tienda</a>
 <a href="carrito.html">Carrito</a>
+<a href="blog.html">Blog</a>
 </nav>
 </header>
 
@@ -72,9 +78,7 @@ Laptop Gamer de alto rendimiento ideal para diseño, ingeniería y gaming.
 Procesador rápido, SSD NVMe y gráficos dedicados.
 </p>
 
-<br>
-
-<button onclick="addToCart('Laptop Gamer',3200)">
+<button onclick="addToCart('Laptop Gamer')">
 Agregar al carrito
 </button>
 
@@ -82,8 +86,16 @@ Agregar al carrito
 Comprar por WhatsApp
 </button>
 
-</div>
+<hr>
 
+<h3>Reseñas de Clientes</h3>
+
+<div id="reviews"></div>
+
+<input type="text" id="reviewInput" placeholder="Escribe tu opinión">
+<button onclick="addReview()">Enviar Reseña</button>
+
+</div>
 </div>
 
 </section>
@@ -99,12 +111,6 @@ function buyNow(){
 window.open("https://wa.me/51948231352?text=Hola quiero la Laptop Gamer S/3200");
 }
 </script>
-<hr>
-<h3>Reseñas de Clientes</h3>
 
-<div id="reviews"></div>
-
-<input type="text" id="reviewInput" placeholder="Escribe tu opinión">
-<button onclick="addReview()">Enviar Reseña</button>
 </body>
 </html>
