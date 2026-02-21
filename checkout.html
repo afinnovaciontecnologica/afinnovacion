@@ -1,1 +1,81 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Finalizar Compra - AF Innovación Tecnológica</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.form-container{
+max-width:600px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+input, select{
+width:100%;
+padding:10px;
+margin-bottom:15px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<section class="section">
+<h2>Finalizar Pedido</h2>
+
+<div class="form-container">
+
+<input type="text" id="nombre" placeholder="Nombre completo">
+<input type="text" id="telefono" placeholder="Teléfono">
+<input type="text" id="direccion" placeholder="Dirección">
+<select id="pago">
+<option>Yape</option>
+<option>Plin</option>
+<option>Transferencia</option>
+<option>Contraentrega</option>
+</select>
+
+<button onclick="finalizarPedido()">Confirmar Pedido</button>
+
+</div>
+
+</section>
+
+<script>
+function finalizarPedido(){
+let nombre = document.getElementById("nombre").value;
+let telefono = document.getElementById("telefono").value;
+let direccion = document.getElementById("direccion").value;
+let pago = document.getElementById("pago").value;
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let total = 0;
+let productos = "";
+
+cart.forEach(item=>{
+productos += "- " + item.name + " S/ " + item.price + "%0A";
+total += item.price;
+});
+
+let mensaje = "Hola AF Innovación Tecnológica,%0A";
+mensaje += "Cliente: " + nombre + "%0A";
+mensaje += "Teléfono: " + telefono + "%0A";
+mensaje += "Dirección: " + direccion + "%0A";
+mensaje += "Pago: " + pago + "%0A";
+mensaje += "Productos:%0A" + productos;
+mensaje += "Total: S/ " + total;
+
+window.open("https://wa.me/51948231352?text=" + mensaje);
+
+localStorage.removeItem("cart");
+}
+</script>
+
+</body>
+</html>
