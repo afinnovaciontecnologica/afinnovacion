@@ -1,9 +1,20 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-function addToCart(name, price){
-cart.push({name, price});
+let products = {
+"Laptop Gamer": {price:3200, stock:5},
+"Impresora Epson": {price:650, stock:3},
+"Audífonos Gamer": {price:119, stock:10}
+};
+
+function addToCart(name){
+if(products[name].stock > 0){
+cart.push({name:name, price:products[name].price});
+products[name].stock--;
 localStorage.setItem("cart", JSON.stringify(cart));
-alert("Producto agregado al carrito");
+alert("Producto agregado. Stock restante: "+products[name].stock);
+}else{
+alert("Producto agotado");
+}
 }
 
 function loadCart(){
