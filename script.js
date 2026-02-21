@@ -1,3 +1,24 @@
+let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
+function addReview(){
+let text = document.getElementById("reviewInput").value;
+if(text==="") return;
+
+reviews.push(text);
+localStorage.setItem("reviews", JSON.stringify(reviews));
+displayReviews();
+document.getElementById("reviewInput").value="";
+}
+
+function displayReviews(){
+let container = document.getElementById("reviews");
+container.innerHTML="";
+reviews.forEach(r=>{
+container.innerHTML += "<p>⭐ "+r+"</p>";
+});
+}
+
+displayReviews();
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let products = {
