@@ -1,3 +1,7 @@
+/* =====================================
+   AF INNOVACIÓN TECNOLÓGICA - SCRIPT PRO
+===================================== */
+
 /* =========================
    RESEÑAS
 ========================= */
@@ -8,21 +12,21 @@ let input = document.getElementById("reviewInput");
 if(!input) return;
 
 let text = input.value.trim();
-if(text==="") return;
+if(text === "") return;
 
 reviews.push(text);
 localStorage.setItem("reviews", JSON.stringify(reviews));
 displayReviews();
-input.value="";
+input.value = "";
 }
 
 function displayReviews(){
 let container = document.getElementById("reviews");
 if(!container) return;
 
-container.innerHTML="";
+container.innerHTML = "";
 reviews.forEach(r=>{
-container.innerHTML += "<p>⭐ "+r+"</p>";
+container.innerHTML += `<p>⭐ ${r}</p>`;
 });
 }
 
@@ -32,7 +36,6 @@ displayReviews();
 /* =========================
    CARRITO Y STOCK
 ========================= */
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let products = {
@@ -48,7 +51,7 @@ if(products[name].stock > 0){
 cart.push({name:name, price:products[name].price});
 products[name].stock--;
 localStorage.setItem("cart", JSON.stringify(cart));
-alert("Producto agregado. Stock restante: "+products[name].stock);
+alert("Producto agregado. Stock restante: " + products[name].stock);
 }else{
 alert("Producto agotado");
 }
@@ -60,7 +63,7 @@ let totalElement = document.getElementById("total");
 
 if(!container || !totalElement) return;
 
-container.innerHTML="";
+container.innerHTML = "";
 let total = 0;
 
 cart.forEach((item, index)=>{
@@ -85,35 +88,41 @@ alert("Carrito vacío");
 return;
 }
 
-let msg = "Hola AF Innovación Tecnológica,%0AQuiero:%0A";
+let msg = "Hola AF Innovación Tecnológica\nQuiero:\n";
 cart.forEach(item=>{
-msg += `- ${item.name} S/ ${item.price}%0A`;
+msg += `- ${item.name} S/ ${item.price}\n`;
 });
-window.open(`https://wa.me/51948231352?text=${msg}`);
+
+let url = "https://wa.me/51948231352?text=" + encodeURIComponent(msg);
+window.open(url);
 }
 
 
 /* =========================
-   SLIDER (PROTEGIDO)
+   SLIDER
 ========================= */
-
+let currentSlide = 0;
 const slides = document.querySelectorAll(".slide");
 
-if(slides.length > 0){
-let currentSlide = 0;
-
 function showSlide(index){
+if(slides.length === 0) return;
+
 slides.forEach(slide => slide.classList.remove("active"));
 slides[index].classList.add("active");
 }
 
 function changeSlide(direction){
+if(slides.length === 0) return;
+
 currentSlide += direction;
+
 if(currentSlide >= slides.length) currentSlide = 0;
 if(currentSlide < 0) currentSlide = slides.length - 1;
+
 showSlide(currentSlide);
 }
 
+if(slides.length > 0){
 setInterval(()=>{
 changeSlide(1);
 },4000);
@@ -121,14 +130,13 @@ changeSlide(1);
 
 
 /* =========================
-   CONTADOR (PROTEGIDO)
+   CONTADOR
 ========================= */
-
 let countdownElement = document.getElementById("countdown");
 
 if(countdownElement){
 let endDate = new Date();
-endDate.setHours(endDate.getHours()+24);
+endDate.setHours(endDate.getHours() + 24);
 
 setInterval(()=>{
 let now = new Date();
@@ -140,10 +148,11 @@ return;
 }
 
 let hours = Math.floor(diff / (1000*60*60));
-let minutes = Math.floor((diff % (1000*60*60))/(1000*60));
-let seconds = Math.floor((diff % (1000*60))/1000);
+let minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+let seconds = Math.floor((diff % (1000*60)) / 1000);
 
 countdownElement.innerHTML =
-hours+"h "+minutes+"m "+seconds+"s";
+hours + "h " + minutes + "m " + seconds + "s";
 },1000);
 }
+
