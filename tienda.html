@@ -1,11 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tienda - AF Innovación Tecnológica</title>
+
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
 <div class="topbar">
@@ -18,6 +21,7 @@
 <nav>
 <a href="index.html">Inicio</a>
 <a href="carrito.html">Carrito</a>
+<a href="blog.html">Blog</a>
 </nav>
 </header>
 
@@ -26,7 +30,6 @@
 
 <div class="layout">
 
-<!-- FILTROS -->
 <div class="filters">
 <h3>Filtros</h3>
 
@@ -43,31 +46,29 @@
 <p><strong>Precio máximo</strong></p>
 <input type="number" id="priceFilter" placeholder="Ej: 1000">
 <button onclick="filterPrice()">Aplicar</button>
-
 </div>
 
-<!-- PRODUCTOS -->
-<div class="products" id="productContainer">
+<div class="products">
 
 <div class="card" data-category="computadora" data-price="3200">
 <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
 <h3>Laptop Gamer</h3>
 <div class="price">3200</div>
-<button onclick="addToCart('Laptop Gamer',3200)">Agregar</button>
+<button onclick="addToCart('Laptop Gamer')">Agregar</button>
 </div>
 
 <div class="card" data-category="impresora" data-price="650">
 <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7">
 <h3>Impresora Epson</h3>
 <div class="price">650</div>
-<button onclick="addToCart('Impresora Epson',650)">Agregar</button>
+<button onclick="addToCart('Impresora Epson')">Agregar</button>
 </div>
 
 <div class="card" data-category="accesorio" data-price="119">
 <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7">
 <h3>Audífonos Gamer</h3>
 <div class="price">119</div>
-<button onclick="addToCart('Audífonos Gamer',119)">Agregar</button>
+<button onclick="addToCart('Audífonos Gamer')">Agregar</button>
 </div>
 
 </div>
@@ -81,8 +82,6 @@
 <button>3</button>
 </div>
 
-
-  
 <footer>
 AF Innovación Tecnológica - Huaraz
 </footer>
