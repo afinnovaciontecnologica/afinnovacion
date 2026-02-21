@@ -1,17 +1,25 @@
+/* =========================
+   RESEÑAS
+========================= */
 let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
 
 function addReview(){
-let text = document.getElementById("reviewInput").value;
+let input = document.getElementById("reviewInput");
+if(!input) return;
+
+let text = input.value.trim();
 if(text==="") return;
 
 reviews.push(text);
 localStorage.setItem("reviews", JSON.stringify(reviews));
 displayReviews();
-document.getElementById("reviewInput").value="";
+input.value="";
 }
 
 function displayReviews(){
 let container = document.getElementById("reviews");
+if(!container) return;
+
 container.innerHTML="";
 reviews.forEach(r=>{
 container.innerHTML += "<p>⭐ "+r+"</p>";
@@ -19,6 +27,12 @@ container.innerHTML += "<p>⭐ "+r+"</p>";
 }
 
 displayReviews();
+
+
+/* =========================
+   CARRITO Y STOCK
+========================= */
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let products = {
@@ -28,6 +42,8 @@ let products = {
 };
 
 function addToCart(name){
+if(!products[name]) return;
+
 if(products[name].stock > 0){
 cart.push({name:name, price:products[name].price});
 products[name].stock--;
@@ -40,16 +56,21 @@ alert("Producto agotado");
 
 function loadCart(){
 let container = document.getElementById("cartItems");
+let totalElement = document.getElementById("total");
+
+if(!container || !totalElement) return;
+
+container.innerHTML="";
 let total = 0;
 
 cart.forEach((item, index)=>{
 container.innerHTML += `
-<p>${item.name} - S/ ${item.price} 
+<p>${item.name} - S/ ${item.price}
 <button onclick="removeItem(${index})">❌</button></p>`;
 total += item.price;
 });
 
-document.getElementById("total").innerText = total;
+totalElement.innerText = total;
 }
 
 function removeItem(index){
@@ -59,15 +80,27 @@ location.reload();
 }
 
 function sendWhatsApp(){
+if(cart.length === 0){
+alert("Carrito vacío");
+return;
+}
+
 let msg = "Hola AF Innovación Tecnológica,%0AQuiero:%0A";
 cart.forEach(item=>{
 msg += `- ${item.name} S/ ${item.price}%0A`;
 });
 window.open(`https://wa.me/51948231352?text=${msg}`);
 }
-/* SLIDER */
-let currentSlide = 0;
+
+
+/* =========================
+   SLIDER (PROTEGIDO)
+========================= */
+
 const slides = document.querySelectorAll(".slide");
+
+if(slides.length > 0){
+let currentSlide = 0;
 
 function showSlide(index){
 slides.forEach(slide => slide.classList.remove("active"));
@@ -84,9 +117,16 @@ showSlide(currentSlide);
 setInterval(()=>{
 changeSlide(1);
 },4000);
+}
 
 
-/* CONTADOR */
+/* =========================
+   CONTADOR (PROTEGIDO)
+========================= */
+
+let countdownElement = document.getElementById("countdown");
+
+if(countdownElement){
 let endDate = new Date();
 endDate.setHours(endDate.getHours()+24);
 
@@ -94,10 +134,16 @@ setInterval(()=>{
 let now = new Date();
 let diff = endDate - now;
 
+if(diff <= 0){
+countdownElement.innerHTML = "Oferta finalizada";
+return;
+}
+
 let hours = Math.floor(diff / (1000*60*60));
 let minutes = Math.floor((diff % (1000*60*60))/(1000*60));
 let seconds = Math.floor((diff % (1000*60))/1000);
 
-document.getElementById("countdown").innerHTML =
+countdownElement.innerHTML =
 hours+"h "+minutes+"m "+seconds+"s";
 },1000);
+}
